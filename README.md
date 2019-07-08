@@ -87,6 +87,6 @@ chmod +x ./apt-select.sh
  - [提交 BUG 或建议](https://github.com/wzblog/apt-select/issues)
 
 [1]: ./apt-select.png
-[2]: https://img.shields.io/badge/apt--select-v0.0.0-blue.svg
+[2]: https://img.shields.io/badge/apt--select-v0.0.1-blue.svg
 [3]: https://img.shields.io/badge/license-MIT-blue.svg
 
