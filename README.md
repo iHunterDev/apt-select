@@ -21,6 +21,18 @@
 
 
 
+## 使用方法
+
+```sh
+cd ./apt-select
+
+chmod +x ./apt-select.sh
+
+./apt-select.sh ali
+```
+
+
+
 ## 关于
 
  - [作者博客 : https://blog.wz52.cn](https://blog.wz52.cn)
