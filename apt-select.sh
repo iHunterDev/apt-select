@@ -1,3 +1,17 @@
+#!/bin/bash
+
+_github="https://github.com/wzblog/apt-select"
+_app="apt-select"
+
+function e()
+{
+    echo -e "\033[$1m$2\033[0m"
+}
+
+# Backup source
+function backup()
+{
+    echo -e "\033[32m* 开始备份源\033[0m"
     cp /etc/apt/sources.list /etc/apt/sources.list.backup
 
     if [ -e /etc/apt/sources.list.backup ]
