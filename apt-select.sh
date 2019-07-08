@@ -1,29 +1,60 @@
-#!/bin/bash
-
-_github="https://github.com/wzblog/apt-select"
-_app="apt-select"
-
-echo -e "\033[34m * ${_github} \033[0m"
-
-# Backup source
-function backup()
-{
-    echo -e "\033[32m * 开始备份源\033[0m"
     cp /etc/apt/sources.list /etc/apt/sources.list.backup
 
     if [ -e /etc/apt/sources.list.backup ]
     then
-        echo -e "\033[32m * 备份源成功\033[0m"
+        e 32 "* 备份源成功"
     else
-        echo -e "\033[31m * 备份源失败\033[0m"
+        e 31 "* 备份源失败"
         exit 1
     fi
 }
 
-function set()
+
+function update()
 {
-    echo $1 > /etc/apt/sources.list
+    e 32 "* 开始清除旧软件源"
+    apt-get clean
+    apt-get autoclean
+    e 32 "* 结束清除旧软件源"
+    e 32 "* 开始更新软件源"
+    apt-get update
+    e 32 "* 结束更新软件源"
 }
+
+
+function setSource()
+{
+    e 32 "* 开始修改源"
+    echo "----------"
+    echo "+ System: ${1}"
+    echo "+ Version: ${2}"
+    echo "+ Server: ${3}"
+    echo "----------"
+    e 32 "* 开始复制指定源文件"
+
+    if ! command -v git  > /dev/null
+    then
+        e 32 " + Git install"
+        apt-get -y install git
+        apt-get -f install
+        apt-get -y install git
+    fi
+
+    _path=$(pwd)/${1}/${2}/${3}/sources.list
+
+    if [ -e $_path ]
+    then
+        cp $(pwd)/${1}/${2}/${3}/sources.list /etc/apt/sources.list
+        e 32 "* 复制完成"
+
+        # update software sources
+        update
+    else
+        e 31 "* ${_path} 文件未找到"
+        exit 1
+    fi
+}
+
 
 if [[ $1 = ali || $1 = "thu" || $1 = "163" ]]
 then
@@ -34,7 +65,7 @@ fi
 
 case $1 in
     ali )
-        echo "阿里源"
+        setSource ubuntu 18.04 aliyun
     ;;
     thu )
         echo "清华源"
@@ -53,3 +84,5 @@ case $1 in
         echo "----------"
     ;;
 esac
+
+e 33 "* $_github"
