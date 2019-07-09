@@ -12,7 +12,7 @@
 ## 功能列表
 
 - [ ] 自动检测系统版本
-- [ ] Ubuntu 换源
+- [x] Ubuntu 换源
 - [ ] CentOS 换源
 
 
@@ -23,7 +23,7 @@
 - Ubuntu
   - 18.04 TLS
     - [x] 阿里源
-    - [ ] 清华源
+    - [x] 清华源
     - [ ] 网易源
   - 16.04 TLS
     - [ ] 阿里源
@@ -51,14 +51,18 @@
 
 ## 版本历史
 
-### v0.0.0(2019/07/08 13:14 +08:00)
+### v0.0.2(2019/07/09 11:44 +08:30)
 
- - 初始化项目
+- 添加 `ubuntu 18.04 LTS` 清华源设置功能
 
 ### v0.0.1(2019/07/08 21:30 +08:30)
 
 - 初步实现整体框架
 - 添加 `ubuntu 18.04 LTS` 阿里源设置功能
+
+### v0.0.0(2019/07/08 13:14 +08:00)
+
+ - 初始化项目
 
 
 
@@ -71,11 +75,14 @@
 ## 使用方法
 
 ```sh
+git clone https://github.com/wzblog/apt-select.git
+
 cd ./apt-select
 
 chmod +x ./apt-select.sh
 
-./apt-select.sh ali
+./apt-select.sh ali # 阿里源
+./apt-select.sh thu # 清华源
 ```
 
 
@@ -87,6 +94,6 @@ chmod +x ./apt-select.sh
  - [提交 BUG 或建议](https://github.com/wzblog/apt-select/issues)
 
 [1]: ./apt-select.png
-[2]: https://img.shields.io/badge/apt--select-v0.0.1-blue.svg
+[2]: https://img.shields.io/badge/apt--select-v0.0.2-blue.svg
 [3]: https://img.shields.io/badge/license-MIT-blue.svg
 
