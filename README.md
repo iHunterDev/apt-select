@@ -11,7 +11,9 @@
 
 ## 功能列表
 
-- [ ] 自动检测系统版本
+- [x] 自动检测系统版本
+  - [x] Ubuntu18.04
+  - [ ] CentOS
 - [x] Ubuntu 换源
 - [ ] CentOS 换源
 
@@ -51,6 +53,10 @@
 
 ## 版本历史
 
+### v0.0.3(2019/07/10 10:35 +08:30)
+
+- 添加系统和版本检测功能（目前只支持ubuntu18.04版本）
+
 ### v0.0.2(2019/07/09 11:44 +08:30)
 
 - 添加 `ubuntu 18.04 LTS` 清华源设置功能
@@ -75,14 +81,26 @@
 ## 使用方法
 
 ```sh
+# 如果出现 git : 找不到该命令 则运行 sudo apt-get install git
 git clone https://github.com/wzblog/apt-select.git
 
 cd ./apt-select
 
-chmod +x ./apt-select.sh
+sudo chmod +x ./apt-select.sh
 
-./apt-select.sh ali # 阿里源
-./apt-select.sh thu # 清华源
+sudo ./apt-select.sh ali # 阿里源
+sudo ./apt-select.sh thu # 清华源
+```
+
+### 手动指定系统与版本
+
+> 系统名称统一为小写
+>
+> 系统版本只取 `x.y.z` 的 `x.y` 位
+
+```sh
+# 语法 sudo ./apt-select.sh ali [系统名称 系统版本]
+sudo ./apt-select.sh ali ubuntu 18.04
 ```
 
 
@@ -94,6 +112,6 @@ chmod +x ./apt-select.sh
  - [提交 BUG 或建议](https://github.com/wzblog/apt-select/issues)
 
 [1]: ./apt-select.png
-[2]: https://img.shields.io/badge/apt--select-v0.0.2-blue.svg
+[2]: https://img.shields.io/badge/apt--select-v0.0.3-blue.svg
 [3]: https://img.shields.io/badge/license-MIT-blue.svg
 
