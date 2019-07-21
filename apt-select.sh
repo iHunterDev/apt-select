@@ -127,7 +127,7 @@ case $1 in
         setSource $_system $_version tsinghua
     ;;
     163 )
-        echo "网易源"
+        setSource $_system $_version 163
     ;;
     * )
         echo "----------"
