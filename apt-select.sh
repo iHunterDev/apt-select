@@ -112,7 +112,7 @@ fi
 
 
 
-if [[ $1 = ali || $1 = "thu" || $1 = "163" ]]
+if [[ $1 = "ali" || $1 = "thu" || $1 = "163" ]]
 then
     # start backup
     backup
