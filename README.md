@@ -28,9 +28,9 @@
     - [x] 清华源
     - [x] 网易源
   - 16.04 TLS
-    - [ ] 阿里源
-    - [ ] 清华源
-    - [ ] 网易源
+    - [x] 阿里源
+    - [x] 清华源
+    - [x] 网易源
   - 14.04 TLS
     - [ ] 阿里源
     - [ ] 清华源
@@ -52,6 +52,12 @@
 
 
 ## 版本历史
+
+### v0.0.5(2019/07/26 14:00 +08:00)
+
+-   添加 `ubuntu 16.04 LTS` 阿里源设置功能
+-   添加 `ubuntu 16.04 LTS` 清华源设置功能
+-   添加 `ubuntu 16.04 LTS` 网易源设置功能
 
 ### v0.0.4(2019/07/21 10:35 +08:00)
 
@@ -94,6 +100,7 @@ sudo chmod +x ./apt-select.sh
 
 sudo ./apt-select.sh ali # 阿里源
 sudo ./apt-select.sh thu # 清华源
+sudo ./apt-select.sh thu # 网易源
 ```
 
 ### 手动指定系统与版本
@@ -116,6 +123,6 @@ sudo ./apt-select.sh ali ubuntu 18.04
  - [提交 BUG 或建议](https://github.com/wzblog/apt-select/issues)
 
 [1]: ./apt-select.png
-[2]: https://img.shields.io/badge/apt--select-v0.0.3-blue.svg
+[2]: https://img.shields.io/badge/apt--select-v0.0.5-blue.svg
 [3]: https://img.shields.io/badge/license-MIT-blue.svg
 
