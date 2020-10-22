@@ -12,8 +12,6 @@
 ## 功能列表
 
 - [x] 自动检测系统版本
-  - [x] Ubuntu18.04
-  - [ ] CentOS
 - [x] Ubuntu 换源
 - [ ] CentOS 换源
 
