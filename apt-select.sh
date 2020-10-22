@@ -2,12 +2,12 @@
 
 _github="https://github.com/wzblog/apt-select"
 _app="apt-select"
-_system=$2
-_version=$3
+_system=${2}
+_version=${3}
 
 function e()
 {
-    echo -e "\033[$1m$2\033[0m"
+    echo -e "\033[${1}m${2}\033[0m"
 }
 
 # Backup source
@@ -58,7 +58,7 @@ function setSource()
 
     _path=$(pwd)/${1}/${2}/${3}/sources.list
 
-    if [ -e $_path ]
+    if [ -e ${_path} ]
     then
         cp $(pwd)/${1}/${2}/${3}/sources.list /etc/apt/sources.list
         e 32 "* 复制完成"
@@ -90,13 +90,13 @@ function checkSystem()
         _version=${_version:0:5}
     fi
 
-    echo "系统："$_system
-    echo "版本："$_version
+    echo "系统："${_system}
+    echo "版本："${_version}
 
     printf "系统类型与版本是否与你的系统所匹配(输入任意内容表示为匹配):"
     read _mark
 
-    if [ -z $_mark ]
+    if [ -z ${_mark} ]
     then
         e 31 "请手动指定你的系统版本"
         exit 0
@@ -105,29 +105,29 @@ function checkSystem()
 
 
 # 如果没有手动指定则自动获取
-if [[ -z $_system || -z $_version ]]
+if [[ -z ${_system} || -z ${_version} ]]
 then
     checkSystem
 fi
 
 
 
-if [[ $1 = "ali" || $1 = "thu" || $1 = "163" ]]
+if [[ ${1} = "ali" || ${1} = "thu" || ${1} = "163" ]]
 then
     # start backup
     backup
 fi
 
 
-case $1 in
+case ${1} in
     ali )
-        setSource $_system $_version aliyun
+        setSource ${_system} ${_version} aliyun
     ;;
     thu )
-        setSource $_system $_version tsinghua
+        setSource ${_system} ${_version} tsinghua
     ;;
     163 )
-        setSource $_system $_version 163
+        setSource ${_system} ${_version} 163
     ;;
     * )
         echo "----------"
@@ -136,9 +136,9 @@ case $1 in
         echo "+-------------------------------+"
         echo "${_app} ali (阿里源)"
         echo "${_app} thu (清华源)"
-        echo "${_app} 163 (清华源)"
+        echo "${_app} 163 (163源)"
         echo "----------"
     ;;
 esac
 
-e 33 "* $_github"
+e 33 "* ${_github}"
