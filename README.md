@@ -64,6 +64,10 @@
 
 ### v0.0.6(2020/10/22 22:00 +08:00)
 
+-   优化部分代码写法
+
+### v0.0.6(2020/10/22 22:00 +08:00)
+
 -   添加 `ubuntu 20.04 LTS` 阿里源设置功能
 -   添加 `ubuntu 20.04 LTS` 清华源设置功能
 -   添加 `ubuntu 20.04 LTS` 网易源设置功能
@@ -139,7 +143,7 @@ sudo ./apt-select.sh ali ubuntu 18.04
  - [邮箱 : WCGcodes@gmail.com](mailto:wcgcodes@gmail.com)
  - [提交 BUG 或建议](https://github.com/wzblog/apt-select/issues)
 
-[1]: ./apt-select.png
+[1]: ./logo.png
 [2]: https://img.shields.io/badge/apt--select-v0.0.6-blue.svg
 [3]: https://img.shields.io/badge/license-MIT-blue.svg
 

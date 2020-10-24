@@ -48,14 +48,6 @@ function setSource()
     echo "----------"
     e 32 "* 开始复制指定源文件"
 
-    if ! command -v git  > /dev/null
-    then
-        e 32 " + Git install"
-        apt-get -y install git
-        apt-get -f install
-        apt-get -y install git
-    fi
-
     _path=$(pwd)/${1}/${2}/${3}/sources.list
 
     if [ -e ${_path} ]
@@ -80,7 +72,7 @@ function checkSystem()
     then
         # _system=centos
         e 31 "请手动指定你的系统版本"
-        exit 0
+        exit 1
     fi
 
     if [ $(cat /etc/issue | awk '{print $1}') = Ubuntu ]
@@ -93,16 +85,33 @@ function checkSystem()
     echo "系统："${_system}
     echo "版本："${_version}
 
-    printf "系统类型与版本是否与你的系统所匹配(输入任意内容表示为匹配):"
+    printf "系统类型与版本是否与你的系统所匹配(Y/n):"
     read _mark
 
-    if [ -z ${_mark} ]
+    _mark=${_mark:-'Y'}
+
+    if [[ ${_mark} != 'Y' && ${_mark} != 'y' ]]
     then
+        printHelp
         e 31 "请手动指定你的系统版本"
-        exit 0
+        exit 1
     fi
 }
 
+
+
+# 输出帮助信息
+function printHelp()
+{
+    echo "----------"
+    echo "+-------------------------------+"
+    echo "|    Manager for ${_app}     |"
+    echo "+-------------------------------+"
+    echo "${_app} [system version] ali (阿里源)"
+    echo "${_app} [system version] thu (清华源)"
+    echo "${_app} [system version] 163 (163源)"
+    echo "----------"
+}
 
 # 如果没有手动指定则自动获取
 if [[ -z ${_system} || -z ${_version} ]]
@@ -130,14 +139,7 @@ case ${1} in
         setSource ${_system} ${_version} 163
     ;;
     * )
-        echo "----------"
-        echo "+-------------------------------+"
-        echo "|    Manager for ${_app}     |"
-        echo "+-------------------------------+"
-        echo "${_app} ali (阿里源)"
-        echo "${_app} thu (清华源)"
-        echo "${_app} 163 (163源)"
-        echo "----------"
+        printHelp
     ;;
 esac
 
