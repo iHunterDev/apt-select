@@ -16,7 +16,7 @@ function backup()
     echo -e "\033[32m* 开始备份源\033[0m"
     cp /etc/apt/sources.list /etc/apt/sources.list.backup
 
-    if [ -e /etc/apt/sources.list.backup ]
+    if [[ -e /etc/apt/sources.list.backup ]]
     then
         e 32 "* 备份源成功"
     else
@@ -50,7 +50,7 @@ function setSource()
 
     _path=$(pwd)/${1}/${2}/${3}/sources.list
 
-    if [ -e ${_path} ]
+    if [[ -e ${_path} ]]
     then
         cp $(pwd)/${1}/${2}/${3}/sources.list /etc/apt/sources.list
         e 32 "* 复制完成"
@@ -68,19 +68,8 @@ function setSource()
 function checkSystem()
 {
     # 系统类型与版本检查
-    if [ -e /etc/redhat-release ]
-    then
-        # _system=centos
-        e 31 "请手动指定你的系统版本"
-        exit 1
-    fi
-
-    if [ $(cat /etc/issue | awk '{print $1}') = Ubuntu ]
-    then
-        _system=ubuntu
-        _version=$(cat /etc/issue | awk '{print $2}')
-        _version=${_version:0:5}
-    fi
+    _system=$(lsb_release -i | awk '{ print tolower($3) }')
+    _version=$(lsb_release -r | awk '{ print tolower($2) }')
 
     echo "系统："${_system}
     echo "版本："${_version}
